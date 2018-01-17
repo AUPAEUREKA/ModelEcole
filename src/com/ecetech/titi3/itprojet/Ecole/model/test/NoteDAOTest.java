@@ -14,11 +14,11 @@ import com.ecetech.titi3.itprojet.Ecole.model.dao.NoteDAO;
 public class NoteDAOTest {
 
 	@Test
-	public void test() {
+	public void test() throws SQLException {
 		//testVisionnageDesNote();
-		//testInsertionNote();
+		testInsertionNote();
 		//testModificationNote();
-		testSuppresionNote();
+		//testSuppresionNote();
 	}
 	
 	
@@ -50,7 +50,7 @@ public class NoteDAOTest {
 	
 	public void testInsertionNote(){
 		
-		NoteDAO.ajouterNote(8, 12, 3, "Mathématiques", 1);
+		NoteDAO.ajouterNote(19, 20, 4, "Mathématiques", 1);
 		
 	}
 	

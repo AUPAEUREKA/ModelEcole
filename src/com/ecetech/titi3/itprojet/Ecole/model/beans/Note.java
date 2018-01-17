@@ -3,12 +3,12 @@ package com.ecetech.titi3.itprojet.Ecole.model.beans;
 public class Note {
 
 	private int id;
-	private float note;
+	private double note;
 	private int coef;
 	private String module;
 	private int numeroEleve;
 	
-	public Note(int id, float note, int coef, String module, int numeroEleve) {
+	public Note(int id, double note, int coef, String module, int numeroEleve) {
 		this.id = id;
 		this.note = note;
 		this.coef = coef;
@@ -16,7 +16,7 @@ public class Note {
 		this.numeroEleve = numeroEleve;
 	}
 	
-	public Note(int id, float note, int coef) {
+	public Note(int id, double note, int coef) {
 		this.id = id;
 		this.note = note;
 		this.coef = coef;
@@ -38,10 +38,10 @@ public class Note {
 	public void setId(int id) {
 		this.id = id;
 	}
-	public float getNote() {
+	public double getNote() {
 		return note;
 	}
-	public void setNote(float note) {
+	public void setNote(double note) {
 		this.note = note;
 	}
 	public int getCoef() {

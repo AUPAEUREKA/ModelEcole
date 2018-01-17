@@ -23,7 +23,7 @@ public class NoteDAO {
 		{
 			Note noteTemp = new Note();
 			noteTemp.setId(ConnexionDB.getRes().getInt(1));
-			noteTemp.setNote(ConnexionDB.getRes().getFloat(2));
+			noteTemp.setNote(ConnexionDB.getRes().getDouble(2));
 			noteTemp.setCoef(ConnexionDB.getRes().getInt(3));
 			listNote.add(noteTemp);
 		}
@@ -96,7 +96,7 @@ public class NoteDAO {
 	 * @param typeModule : module d'une table Module
 	 * @param numeroEleve : numero d'une table Eleve
 	 */
-	public static int modifierNote(int id, float note, int coef, String module, int numeroEleve){
+	public static int modifierNote(int id, double note, int coef, String module, int numeroEleve){
 		int result = -1;
 		ConnexionDB.DBConnexion();
 		String res = "UPDATE note SET Note = " + note + ", Coef = " + coef + " WHERE Id = "+ id +" AND Type = '" + module + "' AND Numero = " + numeroEleve +"";
