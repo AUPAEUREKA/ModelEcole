@@ -62,7 +62,7 @@ public class NoteDAOTest {
 	
 	public void testSuppresionNote(){
 		
-		NoteDAO.supprimerNote(9);
+		NoteDAO.supprimerNote(8);
 		
 	}
 }
