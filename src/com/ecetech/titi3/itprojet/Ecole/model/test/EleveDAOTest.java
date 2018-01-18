@@ -2,6 +2,7 @@ package com.ecetech.titi3.itprojet.Ecole.model.test;
 
 import static org.junit.Assert.*;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import org.junit.Test;
@@ -12,12 +13,15 @@ import com.ecetech.titi3.itprojet.Ecole.model.dao.EleveDAO;
 public class EleveDAOTest {
 
 	@Test
-	public void test() {
-		testVisionnageDesEleve();
+	public void test() throws SQLException {
+		//testVisionnageDesEleve();
+		//testInsertionDEleve();
+		//testSuppresionEleve();
+		testModificationEleve();
 	}
 
 	
-	public void testVisionnageDesEleve(){
+	public void testVisionnageDesEleve() throws SQLException{
 		ArrayList<Eleve> listEleve = new ArrayList<Eleve>();
 		
 		Eleve e1 = new Eleve("DELEPOULLE", "Julien", 1, 0);
@@ -35,18 +39,14 @@ public class EleveDAOTest {
 	}
 	
 	public void testInsertionDEleve(){
-		
+		EleveDAO.ajouterEleve(3, "RAYON", "Jonathan", "Terminale S1", "John1542");
 	}
 	
-	public void testVisionnageEleve(){
-		
-	}
-	
-	public void testSuppresionEleve(){
-		
+	public void testSuppresionEleve() throws SQLException{
+		EleveDAO.supprimerEleve(3);
 	}
 	
 	public void testModificationEleve(){
-		
+		EleveDAO.modifierEleve(3, "Rayon", "Johnny", 3);
 	}
 }

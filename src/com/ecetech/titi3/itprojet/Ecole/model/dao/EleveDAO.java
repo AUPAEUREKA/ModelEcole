@@ -1,6 +1,5 @@
 package com.ecetech.titi3.itprojet.Ecole.model.dao;
 
-import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
@@ -43,9 +42,16 @@ public class EleveDAO {
 		}
 		String req = "INSERT INTO authentification (LoginEleve, PasswordEleve) VALUES ('"+ loginEleve +"', '"+ randomPassword +"')";
 		try {
-			
+			result = ConnexionDB.getStm().executeUpdate(req);
+			System.out.println("Requete executée");
+		} catch (SQLException ex)
+		{
+			result = - ex.getErrorCode();
+			System.out.println(ex.getMessage());
 		}
-		String res = "INSERT INTO eleve (Numero, Nom, Prenom, nomClasse, Numero) VALUES ("+ numero +" ,'"+ nom +"' , '" + prenom + "', '"+ nomClasse +"' , '" + loginEleve + "')";
+		ConnexionDB.DBClose();
+		ConnexionDB.DBConnexion();
+		String res = "INSERT INTO eleve (Numero, Nom, Prenom, Nb_absences ,nom_classe, LoginEleve) VALUES ("+ numero +" ,'"+ nom +"' , '" + prenom + "', 0,'"+ nomClasse +"' , '" + loginEleve + "')";
 		try {
 			result = ConnexionDB.getStm().executeUpdate(res);
 			System.out.println("Requete executée");
@@ -57,5 +63,91 @@ public class EleveDAO {
 		ConnexionDB.DBClose();
 		return result;
 	}
+	
+	public static int supprimerEleve(int numero) throws SQLException {
+		int result = -1;
+		String login = "";
+		ConnexionDB.DBConnexion();
+		String res = "DELETE FROM Note WHERE Numero = "+ numero;
+		try {
+			result = ConnexionDB.getStm().executeUpdate(res);
+			System.out.println("Requete executée");	
+		} catch (SQLException ex)
+		{
+			result = - ex.getErrorCode();
+			System.out.println(ex.getMessage());
+			
+		}
+		System.out.println(res);
+		String res1 = "DELETE FROM Moyenne WHERE Numero = " + numero;
+		try {
+			result = ConnexionDB.getStm().executeUpdate(res1);
+			System.out.println("Requete executée");	
+		} catch (SQLException ex)
+		{
+			result = - ex.getErrorCode();
+			System.out.println(ex.getMessage());
+			
+		}
+		System.out.println(res1);
+		String res2 = "DELETE FROM Moyenne_finale WHERE Numero = " + numero;
+		try {
+			result = ConnexionDB.getStm().executeUpdate(res2);
+			System.out.println("Requete executée");	
+		} catch (SQLException ex)
+		{
+			result = - ex.getErrorCode();
+			System.out.println(ex.getMessage());
+			
+		}
+		System.out.println(res2);
+		String rechercheLogin = "SELECT LoginEleve FROM Eleve WHERE Numero =" + numero;
+		ConnexionDB.setRes(ConnexionDB.getStm().executeQuery(rechercheLogin));
+		while(ConnexionDB.getRes().next()) {
+			login = ConnexionDB.getRes().getString(1);
+			//System.out.println(login);
+		}
+		System.out.println(login);
+		String req = "DELETE FROM Eleve WHERE Numero = "+ numero;
+		try {
+			result = ConnexionDB.getStm().executeUpdate(req);
+			System.out.println("Requete executée");	
+		} catch (SQLException ex)
+		{
+			result = - ex.getErrorCode();
+			System.out.println(ex.getMessage());
+			
+		}
+		System.out.println(req);
+		String supprLogin = "DELETE FROM authentification WHERE loginEleve = '" + login +"'";
+		try {
+			result = ConnexionDB.getStm().executeUpdate(supprLogin);
+			System.out.println("Requete executée");	
+		} catch (SQLException ex)
+		{
+			result = - ex.getErrorCode();
+			System.out.println(ex.getMessage());
+			
+		}
+		System.out.println(supprLogin);
+		return result;
+	}
+	
+	public static int modifierEleve(int numero, String nom, String prenom, int nbAbsences){
+		int result = -1;
+		ConnexionDB.DBConnexion();
+		String res = "UPDATE eleve SET nom = '" + nom + "', prenom = '"+ prenom + "', nb_absences = "+ nbAbsences +" WHERE numero = "+ numero;
+		//UPDATE `note` SET `Note`= 17 ,`Coef`= 2 WHERE `Id`= 9 AND `Type`= 'Mathématiques' AND `Numero` = 2
+		try {
+			result = ConnexionDB.getStm().executeUpdate(res);
+			System.out.println("Requete executée");	
+		} catch (SQLException ex){
+			result = - ex.getErrorCode();
+		}
+		System.out.println(res);
+		ConnexionDB.DBClose();
+		return result;
+	}
+	
 
 }
