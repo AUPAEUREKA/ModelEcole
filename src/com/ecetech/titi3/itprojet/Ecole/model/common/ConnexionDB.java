@@ -7,7 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class ConnexionDB {
-	private static final String dbPath   = "jdbc:mysql://localhost/bulletin"; //N° de port mysql 3306, 8889 sous mac
+	private static final String dbPath   = "jdbc:mysql://localhost:3306/bulletin"; //N° de port mysql 3306, 8889 sous mac
 	  private static final String user     = "root";
 	  private static final String password = "";
 	  private static Connection   con      = null;
@@ -23,7 +23,7 @@ public class ConnexionDB {
 
 	          return null;
 	      } catch (Exception e) {
-	          System.out.println("ERROR in Connexion to " + dbPath + " :" + e.getMessage());
+	          System.out.println("ERROR in Connexion to " + dbPath + " :");
 
 	          return e;
 	      }
