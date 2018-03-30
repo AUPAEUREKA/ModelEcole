@@ -14,9 +14,9 @@ public class MoyenneDAOTest {
 
 	@Test
 	public void test() throws SQLException {
-		//testVisionnageDesMoyennes();
+		testVisionnageDesMoyennes();
 		//testVisionnageDesMoyennesDUnEleve();
-		testModificationDUneMoyenne();
+		//testModificationDUneMoyenne();
 		//testModificationAppreciation();
 		//testInsertionDUneMoyenne();
 		//testSuppresionDUneMoyenne();

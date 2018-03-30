@@ -15,8 +15,8 @@ public class EleveDAO {
 	 */	
 	public static ArrayList<Eleve> visionnageDesEleves() throws SQLException{
 		ArrayList<Eleve> listEleve = new ArrayList<Eleve>();
-		String res = "SELECT Numero, Nom, Prenom, Nb_absences FROM eleve";
 		ConnexionDB.DBConnexion();
+		String res = "SELECT Numero, Nom, Prenom, Nb_absences FROM eleve";
 		ConnexionDB.setRes(ConnexionDB.getStm().executeQuery(res));
 		while(ConnexionDB.getRes().next())
 		{

@@ -17,9 +17,9 @@ public class MoyenneFinaleDAOTest {
 	public void test() throws SQLException {
 		//testVisionnageDesMoyennesFinales();
 		//testVisionnageDUneMoyenneFinaleDUnEleve();
-		//testModificationDUneMoyenneFinale();
+		testModificationDUneMoyenneFinale();
 		//testModificationAppreciationDirecteur();
-		testInsertionDUneMoyenneFinale();
+		//testInsertionDUneMoyenneFinale();
 		//testSuppresionDUneMoyennFinale();
 	}
 	
@@ -40,7 +40,7 @@ public class MoyenneFinaleDAOTest {
 	}
 	
 	public void testModificationDUneMoyenneFinale() throws SQLException{
-		MoyenneFinaleDAO.modificationDUneMoyenneFinale(1);
+		MoyenneFinaleDAO.modificationDUneMoyenneFinale(2);
 	}
 	
 	public void testSuppresionDUneMoyennFinale(){
